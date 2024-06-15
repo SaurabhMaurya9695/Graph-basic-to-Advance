@@ -1,0 +1,8 @@
+1 - from a given point we can go as much as far is called level .. 
+2 - if we go far as 1 distance then it is called level 1 .
+3 - if we go far as 2 distance then it is called level 2 ... and so on
+4 - We have to use Queue as a DS for BFS 
+5 - Use Visited array for marking Visited or Unvistied 
+6 - mark starting node as Visited
+7 - 
+

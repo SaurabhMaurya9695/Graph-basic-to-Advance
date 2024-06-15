@@ -1,0 +1,130 @@
+1 - given n nodes and m edges . 
+2 - also given m lines edges [{a - b , c - d , d - a}] ;
+
+
+````````````````````````````````````````````````````````````````````````````````````
+
+3   - edges can be store in matrix 
+3.1 - create an adj matrix of adj[n + 1][n + 1] with 0 base indexing 
+3.2 - if edge given between [1 , 2] then go in matrix mark [1 , 2] => 1 and [2 , 1] => 1
+3.3 - marks in undirected way means bidirectional 
+3.4 - space we are using (n * n) 
+
+code -> 
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n , m ;
+    cin >> n >> m ;
+
+    int adj[n + 1][m + 1]; // created adj matrix
+    memset(adj , 0 , sizeof(adj)); 
+    for(int i = 0 ;i < m ; i++){
+        // following m lines given u and v 
+        int u, v ;
+        cin >> u >> v ;
+        adj[u][v] = 1;
+        adj[v][u] = 1;
+
+        // if it is an weight graph then every edge has some weight so instead of 1 we can say weight
+        // adj[u][v] = 1;
+        // adj[v][u] = 1;
+    }
+
+    for(int i = 0 ; i < n ; i ++){
+        for(int j = 0 ; j < n ; j ++){
+            cout << adj[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return 0;
+}
+
+
+````````````````````````````````````````````````````````````````````````````````````
+
+4   - In above method that method is taking too much space (n * n) .. so we can reduce this method 
+4.1 - so we can use adjList -> vector<int>adj[n + 1];
+4.2 - so means every idx has empty vector . 
+4.3 - {0 - [] , 1 - [] , 2 - [] , 3 - []};
+4.4 - space O(2 * E) .. every idx has atmost 2 edges 
+
+code -> 
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n , m ;
+    cin >> n >> m ;
+
+    vector<int> adj[ n + 1];
+
+    for(int i = 0 ;i < m ; i++){
+        // following m lines given u and v 
+        int u, v ;
+        cin >> u >> v ;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    
+    for(int i = 0 ; i <= n ; i ++){
+        vector<int> l = adj[i] ;
+        cout << i << " -> [";
+        for(auto x : l){
+            cout << x << ", ";
+        }
+        cout << " ]";
+        cout << endl;
+    }
+    cout << endl;
+
+    return 0;
+}
+
+`````````````````````````````````````````````````````````````````````````````````````````````````
+5 - Adj list with weighted graph 
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n , m ;
+    cin >> n >> m ;
+
+    vector<pair<int, int>> adj[ n + 1];
+
+    for(int i = 0 ;i < m ; i++){
+        // following m lines given u and v 
+        int u, v , wt;
+        cin >> u >> v >> wt ;
+        adj[u].push_back({v , wt});
+        adj[v].push_back({u , wt});
+    }
+
+    
+    for(int i = 0 ; i <= n ; i ++){
+        vector<pair<int, int>> l = adj[i] ;
+        cout << i << " -> [";
+        for(auto x : l){
+            cout << "{" << x.first << ", " << x.second << "} " << ", ";
+        }
+        cout << " ]";
+        cout << endl;
+    }
+    cout << endl;
+
+    return 0;
+}
+
+
+
+
+

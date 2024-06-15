@@ -1,0 +1,6 @@
+// question -> https://www.lintcode.com/problem/3651/
+
+// 1 - broken graph is called components .. components means no of peices in which graph broken 
+// 2 - No of times we find this edge is not visited then that point is component 
+
+

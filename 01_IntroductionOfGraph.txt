@@ -1,0 +1,10 @@
+1   - if graph has arrows we can say this is directed graph 
+2   - if graph has no arrows we can say this is undirected graph (bidirectional edge present)
+3   - start from a node and end at same node -> then there cycle is present 
+4   - cyclic graph can be directed or undirected as well 
+5   - node can't apper on a path 
+6   - No of incoming edge is called degree of a graph 
+7   - total degree of a graph is total number of edge * 2 
+8   - there are two types of degree { indegree and outdegree} 
+9   - indegree means incoming edges and outdegree means outgoing edges 
+10  - if weight is assign with edge is called edge weight and if weight not assign we can say this is unit weights
